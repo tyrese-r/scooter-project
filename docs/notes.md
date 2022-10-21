@@ -163,3 +163,7 @@ Schedule
 No 14:00 standup
 
 Presentation at 16:00
+
+- UML logic
+- Tests
+- What went well and what could've went better

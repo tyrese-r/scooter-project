@@ -1,5 +1,8 @@
-const Scooter = require("./Scooter");
+const ScooterApp = require("./ScooterApp");
+const User = require("./User");
 
-const s = new Scooter('')
+const s = new ScooterApp('')
+const u = new User('Foo', 'bar', 199)
 
-console.log(s.serial)
+s.register(u)
+s.register(u)

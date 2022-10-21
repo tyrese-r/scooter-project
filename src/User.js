@@ -17,6 +17,9 @@ class User {
   get age() {
     return this.#age
   }
+  set age(age) {
+    this.#age = age
+  }
 
   get password() {
     return this.#password
