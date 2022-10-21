@@ -1,0 +1,40 @@
+classDiagram
+    class Scooter {
+        +string station
+        +User user
+        +number serial
+        +number charge
+        +boolean isBroken
+        +boolean docked
+
+        +constructor(station, user, serial, charge, isBroken, docked) Scooter
+        +rent()
+        +dock() 
+        +recharge()
+        +requestRepair()
+    }
+
+    class User {
+        +string username
+        +string password
+        +number age
+
+        +constructor(username, password, age) User
+    }
+
+    class ScooterApp {
+        +Array string stations
+        +number registeredUsers
+        +ScooterApp[] scooterSessions$
+
+        +constructor() ScooterApp
+        +register(user)
+        +logIn(username, password)
+        +addScooter(location, scooter)
+        +removeScooter(scooterToRemove)
+        
+
+    }
+
+User --* Scooter
+Scooter --* ScooterApp

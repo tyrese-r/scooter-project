@@ -1,0 +1,40 @@
+sequenceDiagram
+    actor User
+    %% Registration
+    User ->> ScooterApp: Registers for Scooter App
+    alt Over 18
+        alt Already registered
+            ScooterApp --> User: Throw error: Already registered
+        else Not registered
+            ScooterApp -->> ScooterApp: Update registered users
+            ScooterApp -->> User: User has registered
+        end
+    else Under 18
+        ScooterApp -->> User: Throw error: Too young
+    end
+    %% Tries to rent scooter
+    User ->> Scooter: Rent Scooter
+    alt Scooter is low on battery
+        Scooter -->> User: Throw error: Scooter low on battery please charge
+        User ->> Scooter: Recharge
+        activate Scooter
+        Scooter ->> Scooter: Scooter recharges to 100
+        deactivate Scooter
+    else Scooter is broken
+        Scooter -->> User: Throw error: Scooter low on battery please charge
+        User ->> Scooter: Request Repair
+        activate Scooter
+        Scooter ->> Scooter: Scooter is getting repaired
+        Scooter -->> User: Scooter repair has been completed
+        deactivate Scooter
+    else User can rent scooter
+        Scooter -->> User: User rides scooter
+        activate Scooter 
+        deactivate Scooter
+    end 
+    activate Scooter
+    
+    User ->> Scooter: User docks scooter
+    deactivate Scooter
+    Scooter -->> User: Scooter has been docked
+    
